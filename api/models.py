@@ -1,11 +1,22 @@
 from django.db import models
 
+DAY_OF_THE_WEEK = (
+  ('1', 'Monday'),
+  ('2', 'Tuesday'),
+  ('3', 'Wednesday'),
+  ('4', 'Thursday'),
+  ('5', 'Friday'),
+  ('6', 'Saturday'), 
+  ('7', 'Sunday'),
+)
+
 # Create your models here.
 class Product(models.Model):
   code = models.AutoField(primary_key=True)
   description = models.CharField(max_length=200)
   price = models.FloatField()
-  committee = models.IntegerField()
+  committee = models.IntegerField(choices=((i,i) for i in range(1, 10)))
+
 
 
 class Client(models.Model):
@@ -27,3 +38,8 @@ class Sell(models.Model):
   seller = models.ForeignKey(Seller, verbose_name=("seller"), on_delete=models.CASCADE)
   sold_products = models.TextField()
   date = models.DateTimeField(auto_now_add=True)
+
+class CommitteePerWeekDay(models.Model):
+  day = models.CharField(max_length=1, choices=DAY_OF_THE_WEEK)
+  min_committee = models.IntegerField(choices=((i,i) for i in range(1, 10)))
+  max_committee = models.IntegerField(choices=((i,i) for i in range(1, 10)))
