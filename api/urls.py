@@ -4,7 +4,7 @@ from .views import (
   ProductViewSet,
   ClientViewSet,
   SellerViewSet,
-  SellViewSet,
+  SoldProductViewSet,
   CommitteePerWeekDayViewSet
 )
 
@@ -12,5 +12,5 @@ api_router = DefaultRouter()
 api_router.register(r'products', ProductViewSet)
 api_router.register(r'clients', ClientViewSet)
 api_router.register(r'sellers', SellerViewSet)
-api_router.register(r'sell', SellViewSet)
-api_router.register(r'CommitteePerWeekDay', CommitteePerWeekDayViewSet)
+api_router.register(r'sold-product', SoldProductViewSet)
+api_router.register(r'committee-per-week-day', CommitteePerWeekDayViewSet)
